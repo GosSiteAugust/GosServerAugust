@@ -20,8 +20,6 @@ class User {
                 await ContactsController.addContacts(req, res)
                 const userData = {
                     ID: req.body.user_data.phoneNumber,
-                    login: req.body.user_data.phoneOrEmailText,
-                    password: req.body.user_data.passwordText
                 };
                 User_model.create(userData)
                     .then(savedContact => {
