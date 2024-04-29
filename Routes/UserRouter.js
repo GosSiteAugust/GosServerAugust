@@ -12,6 +12,7 @@ app.get('/data/:phoneNumber',async(req,res)=>{
     await UserController.getUserData(req,res)
 })
 app.post('/add', async(req,res)=>{
+    console.log("add user")
     await UserController.addUser(req,res)
 })
 app.post('/add/message', async(req,res)=>{
