@@ -11,10 +11,10 @@ app.use(bodyParser.json({ limit: '20mb' }));
 
 const UserRouter = require('./Routes/UserRouter')
 const HotLineRouter = require('./Routes/HotLineRouter')
-
+const ImageRouter = require('./Routes/ImageRouter')
 app.use('/hotline', HotLineRouter)
 app.use('/user', UserRouter)
-
+app.use('/image', ImageRouter)
 app.listen(PORT, ()=>{
     mongoose.connect(connect)
     console.log("server start at "+ PORT)
