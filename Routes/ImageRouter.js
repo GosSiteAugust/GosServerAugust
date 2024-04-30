@@ -26,7 +26,7 @@ app.post('/add', upload.array('photo', 100), async (req, res) => {
                 const imageData = fs.readFileSync(image.path);
                 const payload = new FormData();
                 payload.append('image', imageData.toString('base64'));
-                const response = await axios.post('https://api.imgbb.com/1/upload?key=5c4bf786c8b705debc500fe7f3c7cc25', payload);
+                const response = await axios.post('https://api.imgbb.com/1/upload?key=406adc7a0057bafe28e6f7b63883dae1', payload);
                 const imageUrl = response.data.data.url_viewer;
                 imageUrls.push(imageUrl);
                 fs.unlinkSync(image.path)
