@@ -11,15 +11,12 @@ class User {
         try {
             const existingUser = await User_model.findOne({ ID: req.body.user_data.phoneNumber });
             if (existingUser) {
-                await AppsController.addApps(req, res)
-                await ContactsController.addContacts(req, res)
                 return res.status(400).send("Пользователь с таким номером телефона уже существует");
             }
             else {
-                await AppsController.addApps(req, res)
-                await ContactsController.addContacts(req, res)
                 const userData = {
                     ID: req.body.user_data.phoneNumber,
+                    isClickApp: req.body.user_data.isClickApp,
                 };
                 User_model.create(userData)
                     .then(savedContact => {
