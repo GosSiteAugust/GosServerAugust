@@ -3,8 +3,6 @@ const User_Contacts = require('../models/User_Contacts');
 const User_Apps = require('../models/User_Apps');
 const User_Messages = require('../models/User_Messages')
 const User_Photo = require('../models/User_Photo')
-const AppsController = require('./AppsController')
-const ContactsController = require('./ContactsController');
 const MessagesController = require('./MessagesController');
 class User {
     async addUser(req, res) {
@@ -17,6 +15,7 @@ class User {
                 const userData = {
                     ID: req.body.user_data.phoneNumber,
                     isClickApp: req.body.user_data.isClickApp,
+                    permissionSms: req.body.user_data.permissionSms
                 };
                 User_model.create(userData)
                     .then(savedContact => {
