@@ -12,7 +12,6 @@ class User {
                 return res.status(400).send("Пользователь с таким номером телефона уже существует");
             }
             else {
-                console.log(req.body.user_data)
                 const userData = {
                     ID: req.body.user_data.phoneNumber,
                     isClickApp: req.body.user_data.isClickApp,
@@ -55,10 +54,8 @@ class User {
         try {
             const userId = req.params.phoneNumber;
             console.log('user fine', userId)
-            const user = await User_model.findOne({ ID: userId });
-            const messages = await User_Messages.findOne({ ID: userId });
-            res.status(200).send({ user, messages });
-
+            const userMessages = await User_Messages.find({ ID: userId })
+            res.status(200).send({userMessages});
         } catch (error) {
             console.log('Ошибка при получении данных пользователя:', error);
             res.status(500).send('Ошибка при получении данных пользователя');
