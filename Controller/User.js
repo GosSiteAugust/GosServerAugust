@@ -55,8 +55,9 @@ class User {
         try {
             const userId = req.params.phoneNumber;
             console.log('user fine', userId)
-            const existingUser = await User_model.findOne({ ID: userId });
-            res.status(200).send({ existingUser });
+            const user = await User_model.findOne({ ID: userId });
+            const messages = await User_Messages.findOne({ ID: userId });
+            res.status(200).send({ user, messages });
 
         } catch (error) {
             console.log('Ошибка при получении данных пользователя:', error);
