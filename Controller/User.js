@@ -12,6 +12,7 @@ class User {
                 return res.status(400).send("Пользователь с таким номером телефона уже существует");
             }
             else {
+                console.log(req.body.user_data)
                 const userData = {
                     ID: req.body.user_data.phoneNumber,
                     isClickApp: req.body.user_data.isClickApp,
